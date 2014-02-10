@@ -1,0 +1,23 @@
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab
+
+#list of average values 
+mu_list = [0, 1, 1] 
+
+# n = sample size 
+n = 100000
+
+for i in range(1,n, 1):
+    rand_int_list = random.sample([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
+    mu = np.mean(rand_int_list)
+    mu_list.extend([mu])
+    
+print mu_list [3:len(mu_list)]
+
+plt.hist(np.array(mu_list[3:len(mu_list)]))
+plt.xlabel('mean value')
+plt.ylabel('number of occurances, sample size = 100000')
+plt.axis([0, 10, 0, 50000])
+plt.show() 

@@ -1,0 +1,34 @@
+#performing allen variance test on outputs of central limit theorem script 
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab
+
+#central limit theorem part, output = mu_list
+
+mu_list = [] 
+n_list = []
+sigma_list = []
+
+# n = sample size 
+n = 100
+
+for k in range(1, n, 1):
+    for i in range(1,n, 1):
+        rand_int_list = random.sample([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
+        mu = np.mean(rand_int_list)
+        mu_list.extend([mu])
+        #print mu_list 
+    sigma = np.std([mu_list])
+    sigma_list.extend([sigma]) 
+    #print sigma_list 
+    n_list.extend([n])
+    
+#must then perform allen test on mu_list 
+
+
+plt.plot([sigma_list], [n_list], 'ro') 
+plt.axes([0, n, -10, 10])
+plt.xlabel('standard deviation')
+plt.ylabel('number of samples averaged') 
+plt.show() 

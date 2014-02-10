@@ -1,0 +1,34 @@
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab
+
+n = 50
+
+N = range(0, n)
+
+n_list = [] 
+mean_list = []
+sigma_list = []
+
+for i in range(1, n, 1):
+    rand_int_list = random.sample([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
+    mu = np.mean(rand_int_list)
+    print mu 
+    gauss = np.random.normal(mu, 1, 30)
+    print gauss 
+    mean = np.mean(gauss) 
+    mean_list.extend([mean])
+    n_list.extend([n])
+    sigma = np.std([mean_list])
+    sigma_list.extend([sigma])
+    
+#print mean_list    
+#print sigma_list  
+ 
+
+plt.plot([N], [sigma_list], 'ro') 
+plt.axis([0, n, 0, 5])
+plt.xlabel('N')
+plt.ylabel('standard deviation of means') 
+plt.show() 
